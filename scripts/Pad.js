@@ -1,0 +1,35 @@
+class Pad{
+    constructor(c, bola){
+        this.c = c;
+        this.keyboard = keyboard;
+        this.x=5 ;
+        this.largura = 50;
+        this.altura = 100;
+        this.y=(this.c.canvas.height/2)-(this.altura/2);
+        this.vel=5;
+        
+        this.neymar = new Image();
+        this.neymar.width = 50;
+        this.neymar.height = 100;
+        this.neymar.src ="assets/ney.png";
+        this.neymar.addEventListener("load", () =>{
+            this.draw()
+        });
+
+
+    }
+    management(){
+        
+        if (this.keyboard.cima) 
+            if (this.y > 0 && this.y - 5)
+                this.y-=this.vel;
+        if (this.keyboard.baixo)
+            if (this.y < this.c.canvas.height-this.altura) 
+                this.y+=this.vel;
+    }
+    draw(){
+        this.management();
+        //this.c.fillStyle = "yellow";
+        this.c.drawImage(this.neymar, this.x, this.y, this.neymar.width, this.neymar.height);
+    }
+}
